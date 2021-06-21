@@ -6,6 +6,7 @@ import { useMovieState } from '../MVVM/model/MovieModel';
 
 function Main() {
 	const movie = useMovieState();
+	console.log(movie);
 	let rank = 1;
 	let len = movie.length;
 	if(len>4) len =4;
