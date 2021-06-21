@@ -21,43 +21,11 @@ function Login() {
 	const SubmitHandler = (event) => {
 		event.preventDefault();
 		if(tabValue===0){
-			let body = {
-				id: id,
-				password: pw
-			}
-			axios.post(`${API_URL}/login`, body)
-			.then(response=>{
-				if(response.data.success){
-					if(response.data.user[1].CS_CLASSIFY_CODE === 20003){
-						alert('관리자님, 환영합니다.')
-						sessionStorage.setItem("isManager", true);
-						sessionStorage.setItem("forManager", true);
-						window.location.href='/';
-					}
-					else{
-						alert(`${response.data.user[0].MEM_ID}님 로그인 되었습니다!`);
-						sessionStorage.setItem("isLogined", true);
-						sessionStorage.setItem("memNum", response.data.user[0].MEM_NUM)
-						window.location.href='/';
-					}
-				}
-				else
-					alert(response.data.message);
-			})
-		}
-		else{
-			let body = {
-				phone: phone,
-				id: id,
-				password: pw
-			}
-			axios.post(`${API_URL}/login`, body)
-			.then(response=>{
-				if(response.data.success)
-					alert(`${response.data}님 가입을 축하드립니다!`);
-				else
-					alert(response.data.message);
-			})
+			alert('관리자로 로그인 되셨습니다~');
+			sessionStorage.setItem("isManager", true);
+			sessionStorage.setItem("forManager", true);
+			sessionStorage.setItem("memNum", 1);
+			window.location.href='/';
 		}
 	}
 	// input -->

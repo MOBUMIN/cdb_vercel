@@ -13,6 +13,12 @@
 		font-weight: bold;
 	}
 
+	.trailer_back {
+		background: black !important;
+		display: flex !important;
+		justify-content: center;
+	}
+
 	// <-- movie
 	.movie {
 		display: flex;

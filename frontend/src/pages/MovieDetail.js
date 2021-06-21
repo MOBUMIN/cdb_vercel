@@ -110,7 +110,7 @@ function MovieDetail(props) {
 	// carousel setting -->
 
 	// <-- Tab
-	const [tabValue, setTabValue] = useSessionStorage("tabValue", 0);
+	const [tabValue, setTabValue] = useState(0);
 	const tabChangeHandler = (e, newValue) => {
 		setTabValue(newValue);
 	}
@@ -134,6 +134,7 @@ function MovieDetail(props) {
 	const [editC, setEditC] = useState([true,true,true,true,true])
 	const [editS, setEditS] = useState(5);
 	const starEditHandler = (e, index) => {
+		console.log(index);
 		e.preventDefault();
 		let clickStates = [...editC];
 		for(let i=0; i<5; i++){
@@ -144,9 +145,16 @@ function MovieDetail(props) {
 		setEditC(clickStates);
 	}
 	const [editP, setEditP] = useState();
-	const editModeHandler = (id, comment) => {
+	const editModeHandler = (id, comment, star) => {
 		setReviewEditMode(id)
 		setEditP(comment);
+		let clickStates = [...editC];
+		for(let i=0; i<5; i++){
+			if(i <= star-1) clickStates[i] = true;
+			else clickStates[i] = false;
+		}
+		setEditS(star);
+		setEditC(clickStates);
 	}
 	// star -->
 
@@ -158,33 +166,13 @@ function MovieDetail(props) {
 			alert('comment를 입력해주세요');
 		else if(mem_num<0) alert('회원만 리뷰를 작성할 수 있습니다.')
 		else{
-			let body={
-				mem_num: mem_num,
-				movie_num: movieId,
-				stars: score,
-				comments: comment
-			}
-			console.log(body);
-			axios.post(`${API_URL}/review`, body)
-			.then(res =>{
-				if(res.data.success){
-					alert('리뷰를 작성하였습니다.');
-				}
-				else
-					alert(res.data.message);
-			})
+			alert('리뷰를 작성하였습니다.');
+			setComment("");
 		}
 	}
 
 	const deleteHandler = (review_num) => {
-		axios.delete(`${API_URL}/review/${review_num}`)
-			.then(res =>{
-				if(res.data.success){
-					alert(res.data.message);
-				}
-				else
-					alert(res.data.message);
-			})
+		alert('리뷰를 삭제했습니다!');
 	}
 
 	const editSubmitHandler = (e) => {
@@ -192,22 +180,8 @@ function MovieDetail(props) {
 		if(editP==undefined || editP === "")
 			alert('comment를 입력해주세요');
 		else{
-			let body={
-				review_num: reviewEditMode,
-				movie_num: movieId,
-				stars: editS,
-				comments: editP
-			}
-			console.log(body);
-			axios.patch(`${API_URL}/review`, body)
-			.then(res =>{
-				if(res.data.success){
-					alert('리뷰를 수정하였습니다.');
-					setReviewEditMode(-1);
-				}
-				else
-					alert(res.data.message);
-			})
+			alert('리뷰를 수정하였습니다.');
+			setReviewEditMode(-1);
 		}
 	}
 
@@ -277,11 +251,11 @@ function MovieDetail(props) {
 							<Slider {...settings}>
 								{
 									shot && shot.map(shot => (
-										<Grid>
-										<a href={shot.TRAILER_SHOT_ROUTE} target="_blank">
-											<img alt="예고 사진" style={{maxHeight:'230px'}} src={shot.TRAILER_SHOT_ROUTE} />
-										</a>
-									</Grid>
+										<Grid className="trailer_back">
+											<a href={shot.TRAILER_SHOT_ROUTE} target="_blank">
+												<img alt="예고 사진" style={{maxHeight:'230px'}} src={shot.TRAILER_SHOT_ROUTE} />
+											</a>
+										</Grid>
 									))
 								}
 							</Slider>
@@ -332,12 +306,12 @@ function MovieDetail(props) {
 											<Grid className="comment-box">
 												<Grid className="starScore-con">
 													<span className="star-clicker">
-												<Star width="20" height="20" fill={editC[0] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,0)} />
-												<Star width="20" height="20" fill={editC[1] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,1)} />
-												<Star width="20" height="20" fill={editC[2] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,2)} />
-												<Star width="20" height="20" fill={editC[3] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,3)} />
-												<Star width="20" height="20" fill={editC[4] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,4)} />
-												</span>
+														<Star width="20" height="20" fill={editC[0] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,0)} />
+														<Star width="20" height="20" fill={editC[1] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,1)} />
+														<Star width="20" height="20" fill={editC[2] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,2)} />
+														<Star width="20" height="20" fill={editC[3] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,3)} />
+														<Star width="20" height="20" fill={editC[4] ? 'yellow' : 'gray'} onClick={e => starEditHandler(e,4)} />
+													</span>
 												</Grid>
 												<TextField
 													value={editP}
@@ -359,12 +333,12 @@ function MovieDetail(props) {
 												{	
 													review.MEM_NUM === mem_num &&
 													<>
-													<IconButton color="inherit" style={{padding:'0 0.5rem 0 1rem'}} onClick={()=>editModeHandler(review.REVIEW_NUM, review.COMMENTS)}>
-														<EditIcon />
-												  	</IconButton>
-													<IconButton color="inherit" style={{padding:'0 0.5rem'}} onClick={()=>deleteHandler(review.REVIEW_NUM)}>
-													  <DeleteIcon />
-													</IconButton>
+														<IconButton color="inherit" style={{padding:'0 0.5rem 0 1rem'}} onClick={()=>editModeHandler(review.REVIEW_NUM, review.COMMENTS, review.STARS)}>
+															<EditIcon />
+														</IconButton>
+														<IconButton color="inherit" style={{padding:'0 0.5rem'}} onClick={()=>deleteHandler(review.REVIEW_NUM)}>
+														<DeleteIcon />
+														</IconButton>
 													</>
 												}
 											</Grid>

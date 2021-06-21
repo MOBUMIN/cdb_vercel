@@ -18,24 +18,8 @@ function Register() {
 
 	const SubmitHandler = (event) => {
 		event.preventDefault();
-		let body = {
-			name: name,
-			phone: phone,
-			id: id,
-			password: pw,
-			regnum: reg+reg2,
-			birth: birth,
-		}
-		console.log(body);
-		axios.post(`${API_URL}/signup`, body)
-		.then(response=>{
-			if(response.data.success){
-				alert(`${response.data.userId}님 가입을 축하드립니다!`);
-				window.location.href='/';
-			}
-			else
-				alert(response.data.message);
-		})
+		alert(`${name}님 가입을 축하드립니다!`);
+		window.location.href='/';
 	}
 	// input -->
 	return (

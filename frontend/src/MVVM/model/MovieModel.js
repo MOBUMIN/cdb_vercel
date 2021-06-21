@@ -46,7 +46,7 @@ function MovieModel({ children }) {
 			POSTER: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
 			RELEASE_DATE: "2021-06-14",
 			SCRN_STATUS: "Y",
-			VIDEO: "ㅇㄹ"
+			VIDEO: "https://www.youtube.com/embed/L9Y-hn2COm0"
 		}
 	]
 	const detailState= [
@@ -101,7 +101,7 @@ function MovieModel({ children }) {
 				{
 					COMMENTS: "와 !! 재밌따!",
 					MEM_NUM: 1,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 1,
 					STARS: 4,
 				},
 				{
@@ -160,13 +160,13 @@ function MovieModel({ children }) {
 				{
 					COMMENTS: "와 !! 재밌따!",
 					MEM_NUM: 1,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 3,
 					STARS: 4,
 				},
 				{
 					COMMENTS: "최고에요!",
 					MEM_NUM: 2,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 4,
 					STARS: 5,
 				}
 			]
@@ -216,13 +216,13 @@ function MovieModel({ children }) {
 				{
 					COMMENTS: "와 !! 재밌따!",
 					MEM_NUM: 1,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 5,
 					STARS: 4,
 				},
 				{
 					COMMENTS: "최고에요!",
 					MEM_NUM: 2,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 6,
 					STARS: 5,
 				}
 			]
@@ -257,20 +257,19 @@ function MovieModel({ children }) {
 				}
 			],
 			[
-				{TRAILER_VIDEO_NUM: 8, TRAILER_VIDEO_ROUTE: "https://www.youtube.com/embed/rf7SFaFSf5c"},
-				{TRAILER_VIDEO_NUM: 9, TRAILER_VIDEO_ROUTE: "https://www.youtube.com/embed/hKNlZcpOmAI"}
+				{TRAILER_VIDEO_NUM: 8, TRAILER_VIDEO_ROUTE: "https://www.youtube.com/embed/L9Y-hn2COm0"},
 			],
 			[
 				{
 					COMMENTS: "와 !! 재밌따!",
 					MEM_NUM: 1,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 7,
 					STARS: 4,
 				},
 				{
 					COMMENTS: "최고에요!",
 					MEM_NUM: 2,
-					REVIEW_NUM: 2,
+					REVIEW_NUM: 8,
 					STARS: 5,
 				}
 			]
