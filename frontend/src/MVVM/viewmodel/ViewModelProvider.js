@@ -1,12 +1,10 @@
 import React from 'react'
-import { MovieViewModel, CodeViewModel } from '.'
+import { CodeViewModel } from '.'
 
 function ViewModelProvider({ children }) {
 	return (
 		<CodeViewModel>
-			<MovieViewModel>
 				{children}
-			</MovieViewModel>
 		</CodeViewModel>
 	)
 }

@@ -11,6 +11,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 import { Header, RatingCircle, useSessionStorage } from '../components';
 import { API_URL } from '../CommonVariable';
+import { useMovieDetailState } from '../MVVM/model/MovieModel';
 
 const starScore = (num) => {
 	// todo: 반복문으로 코드 줄이기 ;
@@ -78,12 +79,16 @@ const starScore = (num) => {
 function MovieDetail(props) {
 	let today = new Date();
 	const movieId = props.match.params.movieId;
-	const [movie, setMovie] = useState();
-	const [shot, setShot] = useState();
-	const [vid, setVid] = useState();
-	const [review, setReview] = useState();
-	const [len, setLen] = useState(1);
-	const [videoLen, setvideoLen] = useState(1)
+	const getData = useMovieDetailState();
+	const getDetailData = getData[movieId-1];
+	console.log(getData);
+	const [movie, setMovie] = useState(getDetailData[0]);
+	console.log(movie);
+	const [shot, setShot] = useState(getDetailData[1]);
+	const [vid, setVid] = useState(getDetailData[2]);
+	const [review, setReview] = useState(getDetailData[3]);
+	const [len, setLen] = useState(getDetailData[1].length);
+	const [videoLen, setvideoLen] = useState(getDetailData[2].length);
 	const mem_num = Number(sessionStorage.getItem("memNum"));
 
 	// <-- carousel setting
@@ -103,22 +108,6 @@ function MovieDetail(props) {
 		className: "movie-list",
 	};
 	// carousel setting -->
-	const getData = async() => {
-		await axios.get(`${API_URL}/movie/${movieId}`)
-		.then(result => {
-			setMovie(result.data.data[0]);
-			setShot(result.data.data[1]);
-			setVid(result.data.data[2]);
-			setReview(result.data.data[3]);
-			setvideoLen(result.data.data[2].length)
-			setLen(result.data.data[1].length)
-		})
-	}
-
-	useEffect(() => {
-		getData();
-	}, [])
-	console.log(review);
 
 	// <-- Tab
 	const [tabValue, setTabValue] = useSessionStorage("tabValue", 0);
@@ -180,7 +169,6 @@ function MovieDetail(props) {
 			.then(res =>{
 				if(res.data.success){
 					alert('리뷰를 작성하였습니다.');
-					getData()
 				}
 				else
 					alert(res.data.message);
@@ -193,7 +181,6 @@ function MovieDetail(props) {
 			.then(res =>{
 				if(res.data.success){
 					alert(res.data.message);
-					getData()
 				}
 				else
 					alert(res.data.message);
@@ -217,7 +204,6 @@ function MovieDetail(props) {
 				if(res.data.success){
 					alert('리뷰를 수정하였습니다.');
 					setReviewEditMode(-1);
-					getData()
 				}
 				else
 					alert(res.data.message);
