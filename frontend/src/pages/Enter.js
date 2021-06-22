@@ -13,6 +13,7 @@ function Enter() {
 	useEffect(()=>{
 		//상영관 리스트 받아오기 
 		axios.get(`${API_URL}/room`).then(response=>{
+			console.log(response)
 			const rooms = response.data;
 			console.log(rooms.rooms);
 			setRoom(rooms.rooms);

@@ -61,7 +61,7 @@ function MovieModel({ children }) {
 				MOVIE_NAME: "크루엘라",
 				MOVIE_NUM: 1,
 				MOVIE_RATING_CODE: 10002,
-				RELEASE_DATE: "2021-05-25T15:00:00.000Z",
+				RELEASE_DATE: new Date("2021-05-25"),
 				SCRN_STATUS: "Y",
 				SCRN_TIME: 133
 			},
@@ -123,7 +123,7 @@ function MovieModel({ children }) {
 				MOVIE_NAME: "노매드랜드",
 				MOVIE_NUM: 2,
 				MOVIE_RATING_CODE: 10002,
-				RELEASE_DATE: "2021-04-14T15:00:00.000Z",
+				RELEASE_DATE: new Date("2021-04-14"),
 				SCRN_STATUS: "Y",
 				SCRN_TIME: 108
 			},
@@ -182,7 +182,7 @@ function MovieModel({ children }) {
 				MOVIE_NAME: "콰이어트 플레이스2",
 				MOVIE_NUM: 3,
 				MOVIE_RATING_CODE: 10004,
-				RELEASE_DATE: "2021-06-15T15:00:00.000Z",
+				RELEASE_DATE: new Date("2021-06-15"),
 				SCRN_STATUS: "Y",
 				SCRN_TIME: 97
 			},
@@ -238,7 +238,7 @@ function MovieModel({ children }) {
 				MOVIE_NAME: "분노의질주",
 				MOVIE_NUM: 3,
 				MOVIE_RATING_CODE: 10004,
-				RELEASE_DATE: "2021-06-15T15:00:00.000Z",
+				RELEASE_DATE: new Date("2021-06-15"),
 				SCRN_STATUS: "Y",
 				SCRN_TIME: 97
 			},

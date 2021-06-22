@@ -4,7 +4,12 @@ const movieRatingState = createContext([]);
 const movieRatingDispatch = createContext(()=>{});
 
 function CodeModel({ children }) {
-	const [movieRatingData, setMovieRatingData] = useState([])
+	const [movieRatingData, setMovieRatingData] = useState([
+		{COMMON_CODE: 10001, CODE_NAME: "전체 이용가"},
+		{COMMON_CODE: 10002, CODE_NAME: "12세 이상 관람가"},
+		{COMMON_CODE: 10003, CODE_NAME: "15세 이상 관람가"},
+		{COMMON_CODE: 10004, CODE_NAME: "청소년 관람불가"}
+	])
 
 	return (
 		<movieRatingState.Provider value={movieRatingData}>

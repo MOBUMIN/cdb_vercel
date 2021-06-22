@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import axios from 'axios';
 import { API_URL } from '../CommonVariable';
 import { useMovieRatingState } from '../MVVM/model/CodeModel';
+import { useMovieDetailState } from '../MVVM/model/MovieModel';
 
 const styles = makeStyles((theme) => ({
 	input: {
@@ -41,50 +42,36 @@ function videoReducer(state, action) {
 }
 
 function ModifyMovie({match}) {
-    const movieid = match.params.movieid;
+    const movieId = match.params.movieid;
 	const classes = styles();
 	const rating = useMovieRatingState();
+	const resData = useMovieDetailState();
+	const resDetailData= resData[movieId-1];
 	console.log(rating);
     const [movieInfo, setMovieInfo] = useState({});
+	const [movieratingcode, setMovieratingcode] = useState();
 	
     useEffect(()=> {
-        axios.get(`${API_URL}/movie/${movieid}`)
-		.then(response=>{
-            var movie = response.data.data[0];
-            movie.RELEASE_DATE = new Date(movie.RELEASE_DATE);
-            setMovieInfo(movie);
-            const imgs = response.data.data[1].map(element => element.TRAILER_SHOT_ROUTE);
-            // console.log(imgs);
-            imageDispatch({
-                type: 'SET',
-                data: imgs,
-            });
-            const vids = response.data.data[2].map(element => element.TRAILER_VIDEO_ROUTE);
-            videoDispatch({
-                type: 'SET',
-                data: vids,
-            });    
+		console.log(resDetailData[0])
+		setMovieInfo(resDetailData[0]);
+		setMovieratingcode(resDetailData[0].MOVIE_RATING_CODE)
+		const imgs = resDetailData[1].map(element => element.TRAILER_SHOT_ROUTE);
+		imageDispatch({
+			type: 'SET',
+			data: imgs,
 		});
+        const vids = resDetailData[2].map(element => element.TRAILER_VIDEO_ROUTE);
+		videoDispatch({
+			type: 'SET',
+			data: vids,
+		});    
     },[]);
 
     const [images, imageDispatch] = useReducer(imageReducer, []);
     const [videos, videoDispatch] = useReducer(videoReducer, []);
     const SubmitHandler = (event) => {
-        event.preventDefault();
-        let body = {
-            movie: movieInfo,
-            images: images,
-            videos: videos,
-        }
-        axios.put(`${API_URL}/movie/${movieInfo.MOVIE_NUM}`, body)
-        .then(response=>{
-            if(response.data.success){
-                alert(`영화가 수정되었습니다.`);
-                window.location.href='/adminmovielist';
-            }
-            else
-                alert(response.data.message);
-        })
+		alert(`영화가 수정되었습니다.`);
+		window.location.href='/adminmovielist';
     }
     function handelClick(e) {
         console.log(e.currentTarget.name);
@@ -111,8 +98,7 @@ function ModifyMovie({match}) {
           ...movieInfo,
           [name]: e.target.value
         });
-      };
-	var temp = movieInfo.MOVIE_RATING_CODE
+    };
     return (
         <div className="createMovie">
             <Header/>
@@ -420,9 +406,7 @@ function ModifyMovie({match}) {
                     marginLeft: '100px',
                     marginBottom: '30px'
                 }}
-                onClick={
-                    SubmitHandler
-                }
+                onClick={SubmitHandler}
             >
             수정하기
             </Button>
