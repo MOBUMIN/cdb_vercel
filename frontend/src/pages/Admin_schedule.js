@@ -7,6 +7,9 @@ import dateToString from '../function/DateToString';
 
 import axios from 'axios';
 import { API_URL } from '../CommonVariable';
+import { useScheduleState } from '../MVVM/model/ScheduleModel';
+import { useRoomState } from '../MVVM/model/RoomModel';
+import { useMovieState } from '../MVVM/model/MovieModel';
 
 function dateTimeToString(dates){
     const date = new Date(dates);
@@ -34,34 +37,12 @@ function dataReducer(state, action) {
 
 function Admin_schedule() {
 	const [all, setAll] = useState(false); // 전체보기 여부
-	useEffect(()=>{
-		//selectedDate 에 해당하는 상영일정들 받아오기 
-		axios.get(`${API_URL}/schedule`).then(response=>{
-			console.log(response.data);
-			setScheduleList(response.data);
-			// console.log(roomList);
-		});
-	},[]);
-	
-	const [scheduleList, setScheduleList] = useState([]);
+	const scheduleList = useScheduleState();
 	
 	const [mode, setMode] = useState(-1); // -1 : list, 0: add
-	const [roomList, setRoomList] = useState([]);
-	const [movieList, setMovieList] = useState([]);
-	useEffect(()=>{
-		//상영관 리스트 받아오기 
-		axios.get(`${API_URL}/room`).then(response=>{
-			const rooms = response.data;
-			// console.log(rooms);
-			setRoomList(rooms.rooms);
-			// console.log(roomList);
-		});
-		axios.get(`${API_URL}/movie`).then(response=>{
-			// console.log(response.data);
-			setMovieList(response.data);
-			// console.log(movieList);
-		});
-	},[]);
+	const roomList= useRoomState();
+	const movieList = useMovieState();
+
 	const [newData, setNewData] = useState({
 		ROOM_NUM : 1,
 		MOVIE_NUM : 1,
@@ -117,67 +98,27 @@ function Admin_schedule() {
 	  const modifyField = e => {
 		console.log(e.currentTarget);
 		console.log(e.target.name);
-		setScheduleList(
-			scheduleList.map(item => item.SCHEDULE_NUM == e.currentTarget.id ? {...item, [e.target.name]: e.target.value}: item)
-		);
+		// setScheduleList(
+		// 	scheduleList.map(item => item.SCHEDULE_NUM == e.currentTarget.id ? {...item, [e.target.name]: e.target.value}: item)
+		// );
 		
         console.log(scheduleList);
     };
 	const onClickAdd = () => { //등록버튼 클릭 
 		// insert 상영일정 api 호출 
-		axios.post(`${API_URL}/schedule`, newData)
-		.then(response=>{
-			if(response.data.success){
-				alert(`상영일정이 등록되었습니다.`);
-				//window.location.href='/';
-				axios.get(`${API_URL}/schedule`).then(response=>{
-					console.log(response.data);
-					setScheduleList(response.data);
-					// console.log(roomList);
-				});
-				setMode(-1);
-			}
-			else
-				alert(response.data.message);
-		});
+		alert('상영일정이 등록되었습니다.')
 	}
 	const onClickUpdate = (schedule_num) => {
 		console.log("update");
 		handlerMode(schedule_num);
 		const body = scheduleList.filter(sche => sche.SCHEDULE_NUM == schedule_num)[0];
 		console.log(body);
-		axios.put(`${API_URL}/schedule/${schedule_num}`, body)
-		.then(response=>{
-			if(response.data.success){
-				alert(`상영일정이 수정되었습니다.`);
-				//window.location.href='/';
-				axios.get(`${API_URL}/schedule`).then(response=>{
-					console.log(response.data);
-					setScheduleList(response.data);
-					// console.log(roomList);
-				});
-				setMode(-1);
-			}
-			else
-				alert(response.data.message);
-		});
+		alert('상영일정이 수정되었습니다.');
+		setMode(-1);
 	}
 	const onClickDelete = (schedule_num) => {
-		axios.delete(`${API_URL}/schedule/${schedule_num}`)
-		.then(response=>{
-			if(response.data.success){
-				alert(`상영일정이 삭제되었습니다.`);
-				//window.location.href='/';
-				axios.get(`${API_URL}/schedule`).then(response=>{
-					console.log(response.data);
-					setScheduleList(response.data);
-					// console.log(roomList);
-				});
-				setMode(-1);
-			}
-			else
-				alert(response.data.message);
-		});
+		alert('상영일정이 삭제되었습니다.');
+		setMode(-1);
 	}
 	// datepicker -->
 	return (
@@ -262,7 +203,7 @@ function Admin_schedule() {
 											{/* <TextField value={movieList.length>0 ? movieList.filter(movie => movie.MOVIE_NUM === data.MOVIE_NUM)[0].MOVIE_NAME : null} onChange={(e)=>setMovie(e.target.value)} /> */}
 										</TableCell>
 										<TableCell align="center" style={{width:'20%'}}>
-											<DatePicker selected={new Date(data.SCRN_DATE)} onChange={(date)=>setScheduleList(scheduleList.map(item => item.SCHEDULE_NUM == data.SCHEDULE_NUM ? {...item, 'SCRN_DATE': date}: item))} 
+											<DatePicker selected={new Date()}
 											timeInputLabel="Time:"
 											dateFormat="MM/dd/yyyy hh:mm aa"
 											showTimeInput/>
@@ -281,7 +222,7 @@ function Admin_schedule() {
 									<TableRow>
 										<TableCell align="center" style={{width:'15%'}}>{data.ROOM_NUM}</TableCell>
 										<TableCell align="center" style={{width:'20%'}}>{movieList.length>0 ? movieList.filter(movie => movie.MOVIE_NUM === data.MOVIE_NUM)[0].MOVIE_NAME : null}</TableCell>
-										<TableCell align="center" style={{width:'20%'}}>{dateTimeToString(data.SCRN_DATE)}</TableCell>
+										<TableCell align="center" style={{width:'20%'}}>{data.SCRN_DATE}</TableCell>
 										<TableCell align="center" style={{width:'15%'}}>
 											<Grid className="btn-con">
 												<Button style={{backgroundColor:'#985555', color:'white'}} onClick={()=>handlerMode(data.SCHEDULE_NUM)}>수정</Button>

@@ -5,23 +5,12 @@ import { Header } from '../components'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';
 import { API_URL } from '../CommonVariable';
+import { useRoomState } from '../MVVM/model/RoomModel';
 
 function Admin_screenroom() {
-	const [roomList, setRoomList] = useState([]);
+	const roomList = useRoomState();
 	const [exitList, setExitList] = useState([]);
 	const [exitCodeList, setExitCodeList] = useState([]);
-
-	useEffect(()=>{
-		//상영관 리스트 받아오기 
-		axios.get(`${API_URL}/room`).then(response=>{
-			setRoomList(response.data.rooms);
-			setExitList(response.data.exits);
-		});
-		axios.get(`${API_URL}/codes/emc_exit`).then(response=>{
-			setExitCodeList(response.data);
-		});
-		
-	},[]);
 
 	// console.log(roomList);
 	console.log(exitList);
@@ -87,36 +76,10 @@ function Admin_screenroom() {
 	}
 	const onClickAdd = () => { //등록버튼 클릭 
 		// insert 상영일정 api 호출 
-		axios.post(`${API_URL}/room`, newData)
-		.then(response=>{
-			if(response.data.success){
-				alert(`상영관이 등록되었습니다.`);
-				//window.location.href='/';
-				axios.get(`${API_URL}/room`).then(response=>{
-					setRoomList(response.data.rooms);
-					setExitList(response.data.exits);
-				});
-				setMode(-1);
-			}
-			else
-				alert(response.data.message);
-		});
+		alert('상영관이 등록되었습니다.')
 	}
 	const onClickDelete = (room_num) => {
-		axios.delete(`${API_URL}/room/${room_num}`)
-		.then(response=>{
-			if(response.data.success){
-				alert(`상영관이 삭제되었습니다.`);
-				//window.location.href='/';
-				axios.get(`${API_URL}/room`).then(response=>{
-					setRoomList(response.data.rooms);
-					setExitList(response.data.exits);
-				});
-				setMode(-1);
-			}
-			else
-				alert(response.data.message);
-		});
+		alert('상영관이 삭제되었습니다.')
 	}
 	return (
 		<Grid className="adminscreenroom">

@@ -99,6 +99,8 @@ function ModifyMovie({match}) {
           [name]: e.target.value
         });
     };
+	//var release = movieInfo.RELEASE_DATE
+	const release=new Date();
     return (
         <div className="createMovie">
             <Header/>
@@ -126,7 +128,7 @@ function ModifyMovie({match}) {
                 <div className="label-form">
                     <div className="label">상영 예정일</div>
                     <DatePicker
-                        selected={movieInfo.RELEASE_DATE}
+                        selected={release}
                         onChange={(date) => {
                             setMovieInfo({
                                 ...movieInfo,
@@ -397,7 +399,7 @@ function ModifyMovie({match}) {
                 ))}
                 </div>
             </div>
-            <Button variant="contained" href="nextpage" 
+            <Button variant="contained"
                 style={{
                     width: '100px',
                     backgroundColor: '#DA8181',

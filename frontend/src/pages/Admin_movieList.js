@@ -29,40 +29,19 @@ function dataReducer(state, action) {
 }
 function AdminMovieList(){
     const [reset, setReset] = useState(false);
+	const movieData = useMovieState();
     useEffect(()=> {
-        axios.get(`${API_URL}/movie`)
-		.then(response=>{
-			const movieData = response.data;
-            dataDispatch({
-                type: 'SET',
-                data: movieData
-            });
+		dataDispatch({
+			type: 'SET',
+			data: movieData
 		});
-    },[reset]);
+    },[]);
    
     const [data, dataDispatch] = useReducer(dataReducer, []); 
     // console.log(data);
     function handelClick(e) {
         if (e.currentTarget.name === "delete-btn") {
-            // console.log(e.currentTarget.id);
-            axios.delete(`${API_URL}/movie/${e.currentTarget.id}`)
-		    .then(response=>{
-                if(response.data.success){
-                    alert(`영화가 삭제되었습니다.`);
-                    //window.location.href='';
-                    axios.get(`${API_URL}/movie`)
-                    .then(response=>{
-                        const movieData = response.data;
-                        dataDispatch({
-                            type: 'SET',
-                            data: movieData
-                        });
-		            });
-                }
-                else
-                    alert(response.data.message);
-            });
-            
+            alert('삭제버튼을 눌렀습니다.');  
         } 
         else if (e.currentTarget.name === 'scrn-end-btn') {
             //console.log(e.currentTarget.id);
@@ -71,23 +50,7 @@ function AdminMovieList(){
             var body =data.filter(item => item.MOVIE_NUM == e.currentTarget.id)[0];
             console.log(body);
             body.SCRN_STATUS = body.SCRN_STATUS==='Y'? 'N' : 'Y';
-            axios.put(`${API_URL}/movie/${e.currentTarget.id}`, body)
-		    .then(response=>{
-                if(response.data.success){
-					body.SCRN_STATUS==='Y' ? alert('영화 상영 시작합니다.') : alert(`영화가 상영 종료 되었습니다.`);
-                    //window.location.href='';
-                    axios.get(`${API_URL}/movie`)
-                    .then(response=>{
-                        const movieData = response.data;
-                        dataDispatch({
-                            type: 'SET',
-                            data: movieData
-                        });
-		            });
-                }
-                else
-                    alert(response.data.message);
-            });
+            alert('상영 종료 버튼을 눌렀습니다.');
         }
         else if (e.currentTarget.name === 'modify-btn') {
             // 영화 등록 페이지로 넘겨서 칸 기본값을 기존 값으로 채워놓기 
@@ -120,7 +83,6 @@ function AdminMovieList(){
                                     aria-label="modify btn"
                                     name="modify-btn"
                                     id={row.MOVIE_NUM}
-                                    //onClick = {handelClick}
                                     href={`/modifymovie/${row.MOVIE_NUM}`}
                                 >
                                     <EditIcon/>

@@ -10,7 +10,7 @@ function ScheduleModel({ children }) {
 			RESIDUAL_SEAT: 80,
 			ROOM_NAME: "2관",
 			ROOM_NUM: 2,
-			SCHEDULE_NUM: 3,
+			SCHEDULE_NUM: 1,
 			SCRN_DATE: "20210614090800",
 			TOTAL_SEAT_CAP: 80
 		},{
@@ -18,7 +18,7 @@ function ScheduleModel({ children }) {
 			RESIDUAL_SEAT: 70,
 			ROOM_NAME: "1관",
 			ROOM_NUM: 1,
-			SCHEDULE_NUM: 4,
+			SCHEDULE_NUM: 2,
 			SCRN_DATE: "20210614110900",
 			TOTAL_SEAT_CAP: 70
 		},{
@@ -26,7 +26,7 @@ function ScheduleModel({ children }) {
 			RESIDUAL_SEAT: 70,
 			ROOM_NAME: "1관",
 			ROOM_NUM: 1,
-			SCHEDULE_NUM: 5,
+			SCHEDULE_NUM: 3,
 			SCRN_DATE: "20210614130900",
 			TOTAL_SEAT_CAP: 70
 		},{
@@ -34,7 +34,7 @@ function ScheduleModel({ children }) {
 			RESIDUAL_SEAT: 80,
 			ROOM_NAME: "2관",
 			ROOM_NUM: 2,
-			SCHEDULE_NUM: 6,
+			SCHEDULE_NUM: 4,
 			SCRN_DATE: "20210614130900",
 			TOTAL_SEAT_CAP: 80
 		}
