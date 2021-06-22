@@ -1,5 +1,5 @@
 import React from 'react';
-import { MovieModel, VisitorModel, CodeModel, RoomModel, ScheduleModel } from '.';
+import { MovieModel, VisitorModel, CodeModel, RoomModel, ScheduleModel, DCModel } from '.';
 
 function ModelProvider({ children }) {
 	return (
@@ -8,7 +8,9 @@ function ModelProvider({ children }) {
 				<MovieModel>
 					<VisitorModel>
 						<ScheduleModel>
-							{children}
+							<DCModel>
+								{children}
+							</DCModel>
 						</ScheduleModel>
 					</VisitorModel>
 				</MovieModel>

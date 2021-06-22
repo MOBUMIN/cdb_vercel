@@ -11,17 +11,12 @@ import {
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import { RatingCircle } from '../components'
-import axios from 'axios';
-import { API_URL } from '../CommonVariable';
+import { useDCState } from '../MVVM/model/DCModel';
 
-function StepSecond({next, prev, movie, movieId, schedule}) {
-	const [dcData, setDcData] = useState();
-	useEffect(() => {
-		axios.get(`${API_URL}/dc`)
-		.then(r=>{
-			setDcData(r.data)
-		})
-	}, [])
+function StepSecond({next, prev, movie, movieId, schedule, seatCount}) {
+	const dcData = useDCState();
+	console.log(dcData);
+
 	const movieData = movie.filter(m=>m.MOVIE_NUM===movieId)[0];
 	console.log(movieData);
 	const [point, setPoint] = useState(0);
@@ -135,15 +130,15 @@ function StepSecond({next, prev, movie, movieId, schedule}) {
 				<Grid className="SecondBody">
 					<Grid className="final-row">
 						<p className="final-head">상품금액</p>
-						<p style={{fontWeight:'bold'}}>원</p>
+						<p style={{fontWeight:'bold'}}>{seatCount*5000}원</p>
 					</Grid>
 					<Grid className="final-row">
 						<p className="final-head">할인금액</p>
-						<p style={{fontWeight:'bold'}}>원</p>
+						<p style={{fontWeight:'bold'}}>0원</p>
 					</Grid>
 					<Grid className="final-row">
 						<p className="final-head">총 금액</p>
-						<p style={{fontWeight:'bold'}}>원</p>
+						<p style={{fontWeight:'bold'}}>{seatCount*5000}원</p>
 					</Grid>
 					<Button
 						variant="contained"

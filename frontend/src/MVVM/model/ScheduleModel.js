@@ -19,7 +19,7 @@ function ScheduleModel({ children }) {
 			ROOM_NAME: "1관",
 			ROOM_NUM: 1,
 			SCHEDULE_NUM: 4,
-			SCRN_DATE: "20210614090900",
+			SCRN_DATE: "20210614110900",
 			TOTAL_SEAT_CAP: 70
 		},{
 			MOVIE_NUM: 1,

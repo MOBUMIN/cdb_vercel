@@ -6,14 +6,23 @@ const visitorState = createContext([]);
 const visitorDispatch = createContext(()=>{});
 
 function VisitorModel({ children }) {
-	const [visitorData, setVisitorData] = useState([])
-	useEffect(() => {
-		async function getdata() {
-			await axios.get(`${API_URL}/enter`)
-			.then(r => setVisitorData(r.data))
+	const initialData = [
+		{
+			VISIT_NUM: 1,
+			VISIT_TIME: '2021062205300000',
+			VISIT_NAME: '김수빈',
+			VISIT_CONTACT: '010-0000-0000',
+			ROOM_NUM: '1관'
+		},
+		{
+			VISIT_NUM: 2,
+			VISIT_TIME: '2021062217300000',
+			VISIT_NAME: '김수빈',
+			VISIT_CONTACT: '010-0000-0000',
+			ROOM_NUM: '2관'
 		}
-		getdata();
-	}, [])
+	]
+	const [visitorData, setVisitorData] = useState(initialData);
 	return (
 		<visitorState.Provider value={visitorData}>
 			<visitorDispatch.Provider value={setVisitorData}>

@@ -22,12 +22,14 @@ function Reserve() {
 
 	//<-- 영화 정보
 	const movie = useMovieState();
-	const [movieId, setMovieId] = useState(0);
+	const [movieId, setMovieId] = useState(1);
 	// 영화 정보 -->
 
 	//<-- 상영일정 정보 ( stepZero 에서 setSchData 함. )
 	const [schData, setSchData] = useState();
 	// 상영일정 정보 -->
+
+	const [seatCount, setSeatCount] = useState(0);
 	
 	return (
 		<Grid className="reserve">
@@ -38,19 +40,19 @@ function Reserve() {
 					step===0 ?
 					<StepZero next={stepNextHandler} selectMovie={setMovieId} selectSch={setSchData} data={movie}/>
 					: step === 1 ?
-					<StepFirst next={stepNextHandler} prev={stepPrevHandler} />
+					<StepFirst next={stepNextHandler} prev={stepPrevHandler} movie={movie} movieId={movieId} schedule={schData} setSeatCount={setSeatCount} />
 					: step === 2 ?
 					<StepSecond
 						next={stepNextHandler} prev={stepPrevHandler}
-						movie={movie} movieId={movieId} schedule={schData} />
-					: <StepFinal movie={movie} schedule={schData} movieId={movieId} />
+						movie={movie} movieId={movieId} schedule={schData} seatCount={seatCount} />
+					: <StepFinal movie={movie} schedule={schData} movieId={movieId} price={seatCount*5000} />
 				}
 			</Grid>
 		</Grid>
 	);
 };
 
-function StepFinal({movie, schedule, movieId}){
+function StepFinal({movie, schedule, movieId, price}){
 	const movieData = movie.filter(m=>m.MOVIE_NUM===movieId)[0];
 	console.log(movieData);
 	console.log(schedule);
@@ -103,6 +105,9 @@ function StepFinal({movie, schedule, movieId}){
 					<Grid className="info-content">
 						<Grid className="left">
 							총 가격
+						</Grid>
+						<Grid className="right">
+							{price}원
 						</Grid>
 					</Grid>
 				</Grid>

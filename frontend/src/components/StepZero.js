@@ -2,8 +2,7 @@ import React, { useState, forwardRef, useEffect } from 'react'
 import { Grid } from '@material-ui/core';
 import { RatingCircle } from '../components'
 import DatePicker from "react-datepicker";
-import axios from 'axios';
-import { API_URL } from '../CommonVariable';
+import { useScheduleState } from '../MVVM/model/ScheduleModel';
 
 function dateTimeToString(date){
     var year = date.getFullYear();              //yyyy
@@ -23,30 +22,17 @@ const stringToDate = (str) => {
 }
 
 function StepZero({next, data, selectMovie, selectSch}) {
-	console.log(data);
-	// <-- 스케쥴 데이터
-	const [schData, setSchData] = useState();
-	async function getSchedule(){
-		await axios.get(`${API_URL}/scheduledetail`)
-		.then(res => {
-			setSchData(res.data);
-		})
-	}
-	console.log(schData);
-	useEffect(() => {
-		getSchedule()
-	}, [])
-	// 스케쥴 데이터 -->
+	const schData = useScheduleState();
 
-	const [ratingCode, setRatingCode] = useState("");
+	const [ratingCode, setRatingCode] = useState("12세이용가");
+	const [selectedMovie, setSelectedMovie] = useState(1);
 
-	const [selectedMovie, setSelectedMovie] = useState(0);
 	const handleMovieSelect = (i) => { // movie_num
 		setSelectedMovie(i);
 		selectMovie(i);
 		setRatingCode(data.filter(d => d.MOVIE_NUM===i)[0].MOVIE_RATING_CODE);
 	}
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [selectedDate, setSelectedDate] = useState(new Date('2021-06-14'));
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 	};

@@ -1,46 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 
 import { Grid, TextField, Button, Link, Select, MenuItem } from '@material-ui/core'
-import { API_URL } from '../CommonVariable';
+import { useRoomState } from '../MVVM/model/RoomModel';
 
 function Enter() {
+	const room = useRoomState();
+	console.log(room);
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
-	const [room, setRoom] = useState([]);
-	const [selectRoom, setSelectRoom] = useState();
-
-	useEffect(()=>{
-		//상영관 리스트 받아오기 
-		axios.get(`${API_URL}/room`).then(response=>{
-			console.log(response)
-			const rooms = response.data;
-			console.log(rooms.rooms);
-			setRoom(rooms.rooms);
-			setSelectRoom(rooms.rooms[0]);
-			console.log(room);
-			console.log(selectRoom);
-		});
-	},[]);
+	const [selectRoom, setSelectRoom] = useState(1);
 
 	const SubmitHandler = (event) => {
 		event.preventDefault();
-		let body = {
-			name: name,
-			contact: phone,
-			room: selectRoom
+		if(name !== "" && phone !== ""){
+			alert('출입명부를 작성했습니다.');
+			window.location.href='/';
 		}
-		axios.post(`${API_URL}/enter`, body)
-		.then(response=>{
-			console.log(response);
-			if(!response.data.success){
-				alert(`출입명부 작성에 실패하셨습니다!`);
-			}
-			else{
-				alert(response.data.message);
-				window.location.href='/';
-			}
-		})
+		else alert('내용을 채워주세요');
 	};
 
 	return (

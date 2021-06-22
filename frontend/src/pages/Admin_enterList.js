@@ -22,7 +22,7 @@ function Admin_enterList() {
 	const visitors = useVisitorState();
 	console.log(visitors);
 	// <-- datepicker
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [selectedDate, setSelectedDate] = useState(new Date('2021-06-22'));
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
 		setAll(false);
