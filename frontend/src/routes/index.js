@@ -20,32 +20,36 @@ import {
 	MovieSchedule,
 } from '../pages';
 import '../css/main.scss';
+import Footer from '../components/Footer';
 
 function Router() {
 	return (
-		<BrowserRouter>
-			<Switch>
-				<Route exact path="/" component={Main} />
-				<Route exact path="/login" component={Login} />
-				<Route exact path="/register" component={Register} />
-				<Route exact path="/moviescreen/:status" component={NowScreen} />
-				<Route exact path="/movie/:movieId" component={MovieDetail} />
-				<Route exact path="/reserve" component={Reserve} />
-				<Route exact path="/enterroom" component={Enter} />
-				<Route exact path="/movieschedule" component={MovieSchedule} />
+		<>
+			<BrowserRouter>
+				<Switch>
+					<Route exact path="/" component={Main} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/register" component={Register} />
+					<Route exact path="/moviescreen/:status" component={NowScreen} />
+					<Route exact path="/movie/:movieId" component={MovieDetail} />
+					<Route exact path="/reserve" component={Reserve} />
+					<Route exact path="/enterroom" component={Enter} />
+					<Route exact path="/movieschedule" component={MovieSchedule} />
 
-        		{/* 관리자용 PAGES  */}
-				<Route exact path="/createmovie" component={CreateMovie} />
-				<Route exact path="/modifymovie/:movieid" component={ModifyMovie} />
-				<Route exact path="/createemployee" component={CreateEMP} />
-				<Route exact path="/adminmovielist" component={AdminMovieList}/>
-				<Route exact path="/adminenterlist" component={AdminEnterList}/>
-				<Route exact path="/adminemplist" component={AdminEMPList}/>
-				<Route exact path="/modifyemp/:empid" component={ModifyEMP}/>
-				<Route exact path="/manageroom" component={Adminscreenroom} />
-				<Route exact path="/adminschedule" component={Adminschedule} />
-			</Switch>
-		</BrowserRouter>
+					{/* 관리자용 PAGES  */}
+					<Route exact path="/createmovie" component={CreateMovie} />
+					<Route exact path="/modifymovie/:movieid" component={ModifyMovie} />
+					<Route exact path="/createemployee" component={CreateEMP} />
+					<Route exact path="/adminmovielist" component={AdminMovieList}/>
+					<Route exact path="/adminenterlist" component={AdminEnterList}/>
+					<Route exact path="/adminemplist" component={AdminEMPList}/>
+					<Route exact path="/modifyemp/:empid" component={ModifyEMP}/>
+					<Route exact path="/manageroom" component={Adminscreenroom} />
+					<Route exact path="/adminschedule" component={Adminschedule} />
+				</Switch>
+			</BrowserRouter>
+			<Footer />
+		</>
 	)
 }
 
