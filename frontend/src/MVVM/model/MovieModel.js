@@ -13,7 +13,7 @@ function MovieModel({ children }) {
 			MOVIE_NAME: "크루엘라",
 			MOVIE_NUM: 1,
 			MOVIE_RATING_CODE: 10002,
-			POSTER: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
+			POSTER: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
 			RELEASE_DATE: "2021-05-26",
 			SCRN_STATUS: "Y",
 			VIDEO: "https://www.youtube.com/embed/yfSMTFzw-Kw"
@@ -23,7 +23,7 @@ function MovieModel({ children }) {
 			MOVIE_NAME: "노매드랜드",
 			MOVIE_NUM: 2,
 			MOVIE_RATING_CODE: 10002,
-			POSTER: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
+			POSTER: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
 			RELEASE_DATE: "2021-04-15",
 			SCRN_STATUS: "Y",
 			VIDEO: "https://www.youtube.com/embed/tfmRVC_GADw"
@@ -33,7 +33,7 @@ function MovieModel({ children }) {
 			MOVIE_NAME: "콰이어트 플레이스2",
 			MOVIE_NUM: 3,
 			MOVIE_RATING_CODE: 10004,
-			POSTER: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
+			POSTER: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
 			RELEASE_DATE: "2021-06-16",
 			SCRN_STATUS: "Y",
 			VIDEO: "https://www.youtube.com/embed/rf7SFaFSf5c"
@@ -43,7 +43,7 @@ function MovieModel({ children }) {
 			MOVIE_NAME: "분노의질주",
 			MOVIE_NUM: 4,
 			MOVIE_RATING_CODE: 10003,
-			POSTER: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
+			POSTER: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true",
 			RELEASE_DATE: "2021-06-14",
 			SCRN_STATUS: "Y",
 			VIDEO: "https://www.youtube.com/embed/L9Y-hn2COm0"
@@ -68,23 +68,23 @@ function MovieModel({ children }) {
 			[
 				{
 					TRAILER_SHOT_NUM: 1,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 2,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%841.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%841.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 3,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%842.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%842.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 4,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%843.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%843.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 5,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%844.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%ED%81%AC%EB%A3%A8%EC%97%98%EB%9D%BC%EC%82%AC%EC%A7%844.jpg?raw=true"
 				}
 			],
 			[
@@ -130,19 +130,19 @@ function MovieModel({ children }) {
 			[
 				{
 					TRAILER_SHOT_NUM: 6,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 7,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%841.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%841.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 8,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%842.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%842.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 9,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%843.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%85%B8%EB%A7%A4%EB%93%9C%20%EC%82%AC%EC%A7%843.jpg?raw=true"
 				}
 			],
 			[
@@ -189,23 +189,23 @@ function MovieModel({ children }) {
 			[
 				{
 					TRAILER_SHOT_NUM: 10,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 11,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%841.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%841.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 12,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%842.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%842.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 13,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%843.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%843.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 14,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%844.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EC%BD%B0%ED%94%8C%EC%82%AC%EC%A7%844.jpg?raw=true"
 				}
 			],
 			[
@@ -245,15 +245,15 @@ function MovieModel({ children }) {
 			[
 				{
 					TRAILER_SHOT_NUM: 15,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 16,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%EC%82%AC%EC%A7%841.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%EC%82%AC%EC%A7%841.jpg?raw=true"
 				},
 				{
 					TRAILER_SHOT_NUM: 17,
-					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/2021_1_DB/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%EC%82%AC%EC%A7%842.jpg?raw=true"
+					TRAILER_SHOT_ROUTE: "https://github.com/MOBUMIN/cdb_vercel/blob/main/assets/%EB%B6%84%EB%85%B8%EC%9D%98%EC%A7%88%EC%A3%BC%20%EC%82%AC%EC%A7%842.jpg?raw=true"
 				}
 			],
 			[
